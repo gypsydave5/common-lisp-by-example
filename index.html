@@ -11,3 +11,33 @@
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">(<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;4.0/5.0 = ~a&quot;</span> (<span class="op">/</span> <span class="fl">4.0</span> <span class="fl">5.0</span>))</a></code></pre></div>
 <p><code>fresh-line</code> adds a new line to the output stream. If one has already been added, it will do nothing.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb5-1" data-line-number="1">(<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;1/2 + 1/4 = ~a~%&quot;</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">          (<span class="op">+</span> <span class="dv">1</span>/<span class="dv">2</span> <span class="dv">1</span>/<span class="dv">4</span>))</a></code></pre></div>
+<ul>
+<li>Lisp has rationals as a type</li>
+<li><code>~%</code> creates a new line</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb6-1" data-line-number="1">(<span class="kw">format</span> <span class="kw">t</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">        <span class="st">&quot;(and t nil) =  ~s~%~</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">         (and </span><span class="sc">\&quot;</span><span class="st">bob</span><span class="sc">\&quot;</span><span class="st"> 5 &#39;joe) = ~s~%~</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">         (and) = ~s~%~</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">         (or t nil) = ~s~%~</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">         (or nil </span><span class="sc">\&quot;</span><span class="st">barry</span><span class="sc">\&quot;</span><span class="st"> nil) = ~s~%~</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">         (or) = ~s~%~</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">         (not nil) = ~s~%&quot;</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">        (<span class="kw">and</span> <span class="kw">t</span> <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">        (<span class="kw">and</span> <span class="st">&quot;bob&quot;</span> <span class="dv">5</span> &#39;joe)</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">        (<span class="kw">and</span>)</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">        (<span class="kw">or</span> <span class="kw">t</span> <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">        (<span class="kw">or</span> <span class="kw">nil</span> <span class="st">&quot;barry&quot;</span> <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">        (<span class="kw">or</span>)</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">        (<span class="kw">not</span> <span class="kw">nil</span>))</a></code></pre></div>
+<ul>
+<li>There is no true or false - only <code>t</code> and <code>nil</code></li>
+<li><code>and</code> and <code>or</code> can take multiple values</li>
+<li>anything that’s not <code>nil</code> is <code>t</code>!</li>
+<li><code>and</code> and <code>or</code> return the ‘last’ value in their argument list</li>
+<li><code>not</code> will return <code>nil</code> for anything and <code>t</code> for <code>nil</code></li>
+<li><code>~&lt;NEWLINE&gt;</code> ignores the newline and all following whitespace</li>
+<li><code>~s</code> is a relative of <code>~a</code>, but prints the argument in its Lisp representation (i.e. with quotes for a string)</li>
+</ul>
