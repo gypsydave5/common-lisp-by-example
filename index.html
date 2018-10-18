@@ -1,0 +1,13 @@
+<h1 id="hello-world">Hello World</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">princ</span> <span class="st">&quot;hello, world&quot;</span>)</a></code></pre></div>
+<h1 id="values">Values</h1>
+<p>With <code>concatenate</code> it can be used with different types of things, we need to specify the output type with the <code>'string</code> symbol.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" data-line-number="1">(<span class="kw">princ</span> (<span class="kw">concatenate</span> &#39;string <span class="st">&quot;hello,&quot;</span> <span class="st">&quot;world&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" data-line-number="1">(<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;1 + 1 = ~a&quot;</span> (<span class="op">+</span> <span class="dv">1</span> <span class="dv">1</span>))</a></code></pre></div>
+<p>Format and output an aesthetic representation of a sum</p>
+<p>“a” is for aesthetic</p>
+<p>The ‘t’ tells format to output to stdout</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" data-line-number="1">(<span class="kw">fresh-line</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">(<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;4.0/5.0 = ~a&quot;</span> (<span class="op">/</span> <span class="fl">4.0</span> <span class="fl">5.0</span>))</a></code></pre></div>
+<p><code>fresh-line</code> adds a new line to the output stream. If one has already been added, it will do nothing.</p>
