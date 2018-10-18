@@ -5,13 +5,19 @@
 ```
 
 - `princ` is a basic print function.
+- it prints an object in a way that looks good for humans
 - string literals are delimited with a `"`
 
 ```shell
-$ sbcl hello-world.lisp
+$ sbcl --script hello-world.lisp
 
 hello, world
 ```
+
+- `--script` is an option to SBCL to load the file then execute
+
+### See also
+[Common Lisp Hyperspec: WRITE, PRIN1, PRINT, PPRINT, PRINC][hyperspec-print]
 
 # Values
 
@@ -82,16 +88,19 @@ added, it will do nothing.
   representation (i.e. with quotes for a string)
 
 ```shell
-$ sbcl values.lisp
-        hello, world
-        1 + 1 = 2
-        4.0/5.0 = 0.8
-        1/2 + 1/4 = 3/4
-        (and t nil) =  NIL
-        (and "bob" 5 'joe) = JOE
-        (and) = T
-        (or t nil) = T
-        (or nil "barry" nil) = "barry"
-        (or) = NIL
-        (not nil) = T
+$ sbcl --script values.lisp
+
+hello, world
+1 + 1 = 2
+4.0/5.0 = 0.8
+1/2 + 1/4 = 3/4
+(and t nil) =  NIL
+(and "bob" 5 'joe) = JOE
+(and) = T
+(or t nil) = T
+(or nil "barry" nil) = "barry"
+(or) = NIL
+(not nil) = T
 ```
+
+[hyperspec-print]:
