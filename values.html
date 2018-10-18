@@ -1,0 +1,64 @@
+<h1 id="values">Values</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">princ</span> (<span class="kw">concatenate</span> &#39;string <span class="st">&quot;hello, &quot;</span> <span class="st">&quot;world&quot;</span>))</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">(<span class="kw">fresh-line</span>)</a></code></pre></div>
+<ul>
+<li><p><code>concatenate</code> can be used with different types, we need to specify the output type with the <code>'string</code> symbol.</p></li>
+<li><p><code>fresh-line</code> adds a new line to the output stream. If one has already been added, it will do nothing.</p></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" data-line-number="1">(<span class="kw">princ</span> (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;1 + 1 = ~a&quot;</span> (<span class="op">+</span> <span class="dv">1</span> <span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">(<span class="kw">fresh-line</span>)</a></code></pre></div>
+<ul>
+<li><code>format</code> is a function for creating formatted output</li>
+<li><code>nil</code> tells <code>format</code> to return the string it creates</li>
+<li><code>~a</code> is a <em>format directive</em>. It prints the next argument to <code>format</code> _a_esthetically.</li>
+<li>All <code>format</code> directives start with <code>~</code></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" data-line-number="1">(<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;4.0/5.0 = ~a&quot;</span> (<span class="op">/</span> <span class="fl">4.0</span> <span class="fl">5.0</span>))</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">(<span class="kw">fresh-line</span>)</a></code></pre></div>
+<ul>
+<li>floating point numbers have a <code>.</code> in them</li>
+<li><code>t</code> as the second argument to <code>format</code> tells it to send the string to stdout.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" data-line-number="1">(<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;1/2 + 1/4 = ~a~%&quot;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">          (<span class="op">+</span> <span class="dv">1</span>/<span class="dv">2</span> <span class="dv">1</span>/<span class="dv">4</span>))</a></code></pre></div>
+<ul>
+<li>Lisp has rational numbers as a separate type - they are written with a <code>/</code> between the numerator and the denomenator.</li>
+<li><code>~%</code> is another <code>format</code> directice. It creates a new line.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb5-1" data-line-number="1">(<span class="kw">format</span> <span class="kw">t</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">        <span class="st">&quot;(and t nil) =  ~s~%~</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">         (and </span><span class="sc">\&quot;</span><span class="st">bob</span><span class="sc">\&quot;</span><span class="st"> 5 &#39;joe) = ~s~%~</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">         (and) = ~s~%~</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">         (or t nil) = ~s~%~</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">         (or nil </span><span class="sc">\&quot;</span><span class="st">barry</span><span class="sc">\&quot;</span><span class="st"> nil) = ~s~%~</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">         (or) = ~s~%~</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">         (not nil) = ~s~%&quot;</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">        (<span class="kw">and</span> <span class="kw">t</span> <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">        (<span class="kw">and</span> <span class="st">&quot;bob&quot;</span> <span class="dv">5</span> &#39;joe)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">        (<span class="kw">and</span>)</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">        (<span class="kw">or</span> <span class="kw">t</span> <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">        (<span class="kw">or</span> <span class="kw">nil</span> <span class="st">&quot;barry&quot;</span> <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">        (<span class="kw">or</span>)</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">        (<span class="kw">not</span> <span class="kw">nil</span>))</a></code></pre></div>
+<ul>
+<li>There is no true or false - only <code>t</code> and <code>nil</code></li>
+<li><code>and</code> and <code>or</code> can take multiple values</li>
+<li>anything that’s not <code>nil</code> is <code>t</code>!</li>
+<li><code>and</code> and <code>or</code> return the ‘last’ value in their argument list</li>
+<li><code>not</code> will return <code>nil</code> for anything and <code>t</code> for <code>nil</code></li>
+<li><code>~&lt;NEWLINE&gt;</code> ignores the newline and all following whitespace</li>
+<li><code>~s</code> is a close relative of <code>~a</code>, but prints the argument in its Lisp representation (i.e. with quotes for a string)</li>
+</ul>
+<pre class="shell"><code>$ sbcl --script values.lisp
+
+hello, world
+1 + 1 = 2
+4.0/5.0 = 0.8
+1/2 + 1/4 = 3/4
+(and t nil) =  NIL
+(and &quot;bob&quot; 5 &#39;joe) = JOE
+(and) = T
+(or t nil) = T
+(or nil &quot;barry&quot; nil) = &quot;barry&quot;
+(or) = NIL
+(not nil) = T</code></pre>

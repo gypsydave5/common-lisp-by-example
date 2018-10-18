@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for file in *.md; do
+  pandoc -o "${file/.md/.html}" $file
+done
