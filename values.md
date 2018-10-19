@@ -1,3 +1,6 @@
+% Common Lisp by Example - Values
+% David Wickes; Chris James; Felix Dilke; Nicky Chorley
+% October 18, 2018
 # Values
 
 ```lisp

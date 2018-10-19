@@ -1,3 +1,12 @@
+---
+title: Hello World
+author:
+  - David Wickes
+  - Chris James
+  - Felix Dilke
+  - Nicky Chorley
+date: October 18th, 2018
+---
 # Hello World
 
 ```lisp

@@ -5,6 +5,6 @@ for file in *.md; do
     --output="${file/.md/.html}" \
     --to=html5 \
     --css=tufte.css \
-    --highlight-style=haddock \
+    --highlight-style=espresso \
     --standalone
 done
