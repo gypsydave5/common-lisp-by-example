@@ -143,18 +143,18 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 <li><code>~&lt;NEWLINE&gt;</code> ignores the newline and all following whitespace</li>
 <li><code>~s</code> is a close relative of <code>~a</code>, but prints the argument in its Lisp representation (i.e. with quotes for a string)</li>
 </ul>
-<pre class="shell"><code>$ sbcl --script values.lisp
-
-hello, world
-1 + 1 = 2
-4.0/5.0 = 0.8
-1/2 + 1/4 = 3/4
-(and t nil) =  NIL
-(and &quot;bob&quot; 5 &#39;joe) = JOE
-(and) = T
-(or t nil) = T
-(or nil &quot;barry&quot; nil) = &quot;barry&quot;
-(or) = NIL
-(not nil) = T</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1">$ <span class="ex">sbcl</span> --script values.lisp</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="ex">hello</span>, world</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="ex">1</span> + 1 = 2</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="ex">4.0/5.0</span> = 0.8</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="ex">1/2</span> + 1/4 = 3/4</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw">(</span><span class="ex">and</span> t nil<span class="kw">)</span> =  <span class="ex">NIL</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">(</span><span class="ex">and</span> <span class="st">&quot;bob&quot;</span> 5 <span class="st">&#39;joe) = JOE</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="st">(and) = T</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="st">(or t nil) = T</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="st">(or nil &quot;barry&quot; nil) = &quot;barry&quot;</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="st">(or) = NIL</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="st">(not nil) = T</span></a></code></pre></div>
 </body>
 </html>

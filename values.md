@@ -69,7 +69,7 @@ added, it will do nothing.
 - `~s` is a close relative of `~a`, but prints the argument in its Lisp
   representation (i.e. with quotes for a string)
 
-```shell
+```bash
 $ sbcl --script values.lisp
 
 hello, world

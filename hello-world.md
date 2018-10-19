@@ -17,7 +17,7 @@ date: October 18th, 2018
 - it prints an object in a way that looks good for humans
 - string literals are delimited with a `"`
 
-```shell
+```bash
 $ sbcl --script hello-world.lisp
 
 hello, world
