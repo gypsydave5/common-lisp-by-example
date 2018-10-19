@@ -1,5 +1,10 @@
 #!/bin/bash
 
 for file in *.md; do
-  pandoc -o "${file/.md/.html}" $file
+  pandoc $file \
+    --output="${file/.md/.html}" \
+    --to=html5 \
+    --css=tufte.css \
+    --highlight-style=haddock \
+    --standalone
 done
