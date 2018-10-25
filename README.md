@@ -11,6 +11,6 @@ project of writing a book will help guide our learning, allow us to collaborate,
 and provide a document of what we've learned.
 
 The book is currently published as a website ([commonlispbyexample.com](http://commonlispbyexample.com)) 
-and as an [epub](common-lisp-by-example.epub).
+and as an [epub](http://commonlispbyexample.com/common-lisp-by-example.epub).
 
 [GoEx]: https://gobyexample.com/
