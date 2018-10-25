@@ -80,3 +80,11 @@ hello, world
 (or) = NIL
 (not nil) = T
 ```
+
+### See also
+[Common Lisp Hyperspec: FORMAT][hs-format]
+[Common Lisp Hyperspec: Formatted output][hs-format-output]
+[Practical Common Lisp: A Few Format Recipes](http://www.gigamonkeys.com/book/a-few-format-recipes.html)
+
+[hs-format]: http://www.lispworks.com/documentation/lw50/CLHS/Body/f_format.htm
+[hs-format-output]: http://www.lispworks.com/documentation/lw50/CLHS/Body/22_c.htm
