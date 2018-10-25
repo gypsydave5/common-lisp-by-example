@@ -1,6 +1,3 @@
-% Common Lisp by Example - Values
-% David Wickes; Chris James; Felix Dilke; Nicky Chorley
-% October 18, 2018
 # Values
 
 ```lisp
@@ -42,7 +39,7 @@ added, it will do nothing.
 - `~%` is another `format` directice. It creates a new line.
 
 ```lisp
-(format 
+(format
         "(and t nil) =  ~s~%~
          (and \"bob\" 5 'joe) = ~s~%~
          (and) = ~s~%~
