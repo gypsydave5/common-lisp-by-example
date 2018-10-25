@@ -1,6 +1,7 @@
 #!/bin/bash
+shopt -s extglob
 
-for file in *.md; do
+for file in !(README).md; do
   pandoc $file \
     --output="${file/.md/.html}" \
     --to=html5 \
@@ -8,3 +9,12 @@ for file in *.md; do
     --highlight-style=espresso \
     --standalone
 done
+
+pandoc --output=common-lisp-by-example.epub \
+  --toc-depth=1 \
+  title.txt \
+  ./hello-world.md \
+  ./values.md \
+  ./variables.md \
+  ./constants.md \
+  ./loops.md
