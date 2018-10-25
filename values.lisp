@@ -16,7 +16,7 @@
 
 (format t
         "(and t nil) =  ~s~%~
-         (and \"bob\" 5 'joe) = ~s~%~
+         (and \"bob\" 5 'joe) = ~s~%~pa
          (and) = ~s~%~
          (or t nil) = ~s~%~
          (or nil \"barry\" nil) = ~s~%~

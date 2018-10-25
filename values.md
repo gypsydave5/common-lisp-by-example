@@ -28,7 +28,7 @@ added, it will do nothing.
 ```lisp
 (format t "4.0/5.0 = ~a" (/ 4.0 5.0))
 (fresh-line)
-```
+``
 
 - floating point numbers have a `.` in them
 - `t` as the second argument to `format` tells it to send the string to stdout.
@@ -37,13 +37,12 @@ added, it will do nothing.
 (format t "1/2 + 1/4 = ~a~%"
           (+ 1/2 1/4))
 ```
-
 - Lisp has rational numbers as a separate type - they are written with a `/`
   between the numerator and the denomenator.
 - `~%` is another `format` directice. It creates a new line.
 
 ```lisp
-(format t
+(format 
         "(and t nil) =  ~s~%~
          (and \"bob\" 5 'joe) = ~s~%~
          (and) = ~s~%~
