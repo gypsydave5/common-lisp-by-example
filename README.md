@@ -10,6 +10,6 @@ None of the contributors are well-versed in Common Lisp, but we feel that the
 project of writing a book will help guide our learning, allow us to collaborate,
 and provide a document of what we've learned.
 
-The book is currently published as a website: [commonlispbyexample.com](http://commonlispbyexample.com)
-
+The book is currently published as a website ([commonlispbyexample.com](http://commonlispbyexample.com)) 
+and as an [epub](common-lisp-by-example.epub),
 [GoEx]: https://gobyexample.com/
