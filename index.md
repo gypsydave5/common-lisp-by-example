@@ -5,3 +5,6 @@
 
 - [Hello, world](hello-world.html)
 - [Values](values.html)
+- [Variables](variables.html)
+- [Constants](constants.html)
+- [Loops](loops.html)
