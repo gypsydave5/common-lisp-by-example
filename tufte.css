@@ -30,14 +30,13 @@
 /* Tufte CSS styles */
 html { font-size: 15px; }
 
-body { width: 87.5%;
+body { width: 80%;
        margin-left: auto;
        margin-right: auto;
-       padding-left: 12.5%;
        font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
        background-color: #fffff8;
        color: #111;
-       max-width: 1400px;
+       max-width: 800px;
        counter-reset: sidenote-counter; }
 
 h1 { font-weight: 400;

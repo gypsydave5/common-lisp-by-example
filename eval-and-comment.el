@@ -1,4 +1,4 @@
-;; either eval the whole file (M-x eval-buffer) or each expression 
+;; either eval the whole file (M-x eval-buffer) or each expression
 (package-refresh-contents)
 (package-install 'lispy)
 (package-install 'default-text-scale)
