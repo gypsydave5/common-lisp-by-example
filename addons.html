@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>addons</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="tufte.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="emacs-addons-which-are-useful-for-teaching-common-lisp">Emacs Addons which are Useful for Teaching Common Lisp</h1>
+<p>This adds the following functionality to Emacs:</p>
+<ul>
+<li>Increase the font size of all buffers at once.</li>
+<li>Evaluate a Lisp expression and insert the result as a comment in the same file</li>
+</ul>
+<p>The first is useful when showing your editor to a large group. The second is useful when showing what each expression evaluates to.</p>
+<h2 id="installation">Installation</h2>
+<p>To install them, a short Elisp script is supplied: <a href="eval-and-comment.el" class="uri">eval-and-comment.el</a>. Open this in Portacle and evaluate it with the Emacs command <code>M-x eval-buffer</code>.</p>
+<h2 id="use">Use</h2>
+<p>You can now zoom all buffers with <code>C-M-=</code> and zoom out with <code>C-M--</code>, and evaluate and comment an expression your cursor is in with <code>C-c C-e</code>.</p>
+<h2 id="explanation">Explanation</h2>
+<pre class="elisp"><code>(package-refresh-contents)
+(package-install &#39;lispy)
+(package-install &#39;default-text-scale)
+(default-text-scale-mode)
+(lispy-mode)
+(global-set-key (kbd &quot;C-c C-e&quot;) &#39;lispy-eval-and-comment)</code></pre>
+<h3 id="elisp">Elisp</h3>
+<p>Elisp is a dialect of Lisp for writing commands to, and extending, the Emacs editor.</p>
+<h3 id="package-refresh-contents"><code>(package-refresh-contents)</code></h3>
+<p>Updates the list of available packages to install in Emacs. This is always a good idea before installing any new packages. Emacs packages are extensions to the Emacs editor.</p>
+<h3 id="package-install-lispy"><code>(package-install 'lispy)</code></h3>
+<p>This installs the Emacs package <a href="https://github.com/abo-abo/lispy"><code>lispy</code></a>, which has a great many useful features and commands, but we’re only going to use one of them.</p>
+<h3 id="package-install-default-text-scale"><code>(package-install 'default-text-scale)</code></h3>
+<p>This installs the Emacs package <a href="https://github.com/purcell/default-text-scale"><code>default-text-scale</code></a> which takes care of the zooming in/out.</p>
+<h3 id="default-text-scale-mode"><code>(default-text-scale-mode)</code></h3>
+<p>Turns on <code>default-text-scale</code> for all buffers. If you need to do this again you can type <code>M-x default-text-scale</code>.</p>
+<h3 id="lispy-mode"><code>(lispy-mode)</code></h3>
+<p>Turns on lispy mode for the current buffer. We do this to bring the function we want into scope.</p>
+<h3 id="global-set-key-kbd-c-c-c-e-lispy-eval-and-comment"><code>(global-set-key (kbd &quot;C-c C-e&quot;) 'lispy-eval-and-comment)</code></h3>
+<p>This globally binds the key sequence <code>C-c C-e</code> to the lispy function <code>lispy-eval-and-comment</code>.</p>
+</body>
+</html>
