@@ -17,4 +17,5 @@ pandoc --output=common-lisp-by-example.epub \
   ./values.md \
   ./variables.md \
   ./constants.md \
-  ./loops.md
+  ./loops.md \
+  ./conditionals.md
