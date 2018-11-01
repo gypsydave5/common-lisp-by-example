@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>conditionals</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #2a211c;
+    color: #bdae9d;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+div.sourceCode
+  { color: #bdae9d; background-color: #2a211c; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffff00; } /* Alert */
+code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #44aa43; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #049b0a; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+code span.dt { text-decoration: underline; } /* DataType */
+code span.dv { color: #44aa43; } /* DecVal */
+code span.er { color: #ffff00; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #44aa43; } /* Float */
+code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+code span.op { } /* Operator */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.sc { color: #049b0a; } /* SpecialChar */
+code span.ss { color: #049b0a; } /* SpecialString */
+code span.st { color: #049b0a; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #049b0a; } /* VerbatimString */
+code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="tufte.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="conditionals">Conditionals</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">if</span> (<span class="kw">evenp</span> <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">    (<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;7 is even~%&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    (<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;7 is odd~%&quot;</span>))</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">;; =&gt; 7 is odd</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">;;    NIL</span></a></code></pre></div>
+<ul>
+<li><code>p</code> at the end of <code>evenp</code> function indicates that it is a “predicate” (i.e. returns <code>t</code> or <code>nil</code>).</li>
+<li>There are no then or else - the second expression is evaluated if the condition is not <code>nil</code>, the third is evaluated if it is <code>nil</code>.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" data-line-number="1">(<span class="kw">when</span> (<span class="op">=</span> <span class="dv">0</span> (<span class="kw">mod</span> <span class="dv">8</span> <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  (<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;8 is divisible by 4~%&quot;</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">  (<span class="kw">princ</span> <span class="st">&quot;Not, but really!&quot;</span>))</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">;; =&gt; 8 is divisible by 4</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">;;    Not, but really!</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">;;    &quot;Not, but really!&quot;</span></a></code></pre></div>
+<ul>
+<li><code>when</code> lets you run multiple expressions given the condition is not <code>nil</code></li>
+<li><code>if</code> would be perfectly valid for a single expression but <code>when</code> is more idiomatic</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" data-line-number="1">(<span class="kw">cond</span> ((<span class="op">&lt;</span> <span class="dv">9</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">       (<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;9 is negative&quot;</span>))</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">      ((<span class="op">&lt;</span> <span class="dv">9</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">       (<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;9 has 1 digit&quot;</span>))</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">      (<span class="kw">t</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">       (<span class="kw">format</span> <span class="kw">t</span> <span class="st">&quot;9 has multiple digits&quot;</span>)))</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">;; =&gt; 9 has 1 digit</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">;;    NIL</span></a></code></pre></div>
+<ul>
+<li>Multiple conditions can be written with <code>cond</code>. The first condition that is not <code>nil</code> will be evaluated and return.</li>
+<li>‘Else’, as implemented in other languages can be written as the symbol <code>t</code> which always evaluates to <code>t</code>, <em>which is not <code>nil</code></em>.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> what-am-i </span>(i)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  (<span class="kw">cond</span> ((<span class="kw">stringp</span> i)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">         <span class="st">&quot;I am a string!!&quot;</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">        ((<span class="kw">integerp</span> i)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">         <span class="st">&quot;I am an integer!!&quot;</span>)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">        ((<span class="kw">listp</span> i)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">         <span class="st">&quot;I am a list!!&quot;</span>)))</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">;; =&gt; WHAT-AM-I</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">(what-am-i <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">;; =&gt; &quot;I am an integer!!&quot;</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">(what-am-i <span class="st">&quot;blah-blah&quot;</span>)</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">;; =&gt; &quot;I am a string!!&quot;</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">(what-am-i (<span class="kw">list</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">;; =&gt; &quot;I am a list!!&quot;</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">(what-am-i <span class="dv">1</span>/<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">;; =&gt; NIL</span></a></code></pre></div>
+<ul>
+<li><code>cond</code> is an expression</li>
+<li>There are built-in functions to test the types of variables. As expected (haha) they end in “p”</li>
+<li>If none of the conditions match, <code>nil</code> is returned</li>
+</ul>
+</body>
+</html>
