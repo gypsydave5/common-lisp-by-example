@@ -3,7 +3,8 @@
 This adds the following functionality to Emacs:
 
 - Increase the font size of all buffers at once.
-- Evaluate a Lisp expression and insert the result as a comment in the same file
+- Evaluate a Lisp expression and insert the result as a comment in the same
+  file, as per the examples.
 
 The first is useful when showing your editor to a large group. The second is
 useful when showing what each expression evaluates to.

@@ -27,7 +27,15 @@ If you're unfamiliar with Emacs, we've produced a [short bootstrap tutorial][ema
 If you intend to contribute to this project, or to teach using the exercises, we
 also recommend [a few additions][addons] to the Portacle setup.
 
-[addons]: addons.html
+## Style
+
+The examples are evaluated in the same file as they are written; the values are
+written as comments below the example. Any side effects (i.e. printing to
+standard out) also appear as comments.
+
+This is taken from the [Lispy][lispy] Emacs package, as described in the
+[add-ons][addons] section.
+
 [PortacleLink]: https://portacle.github.io/
 [Emacs]: https://www.gnu.org/software/emacs/
 [SBCL]: http://www.sbcl.org/
@@ -35,3 +43,4 @@ also recommend [a few additions][addons] to the Portacle setup.
 [QL]: https://www.quicklisp.org/beta/
 [SLIME]: https://common-lisp.net/project/slime/
 [emacs-tutorial]: emacs-tutorial.html
+[addons]: addons.html
