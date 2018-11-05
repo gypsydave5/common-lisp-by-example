@@ -1,16 +1,13 @@
 ---
 title: Hello World
-author:
-  - David Wickes
-  - Chris James
-  - Felix Dilke
-  - Nicky Chorley
-date: October 18th, 2018
 ---
 # Hello World
 
 ```lisp
 (princ "hello, world")
+;; => hello, world
+;;
+;;    "hello, world"
 ```
 
 - Functions in Common Lisp appear at the beginning of a pair of parentheses.
@@ -19,14 +16,6 @@ date: October 18th, 2018
 - `princ` is a basic print function.
 - It prints an object in a way that looks good for humans.
 - String literals are delimited with a `"`.
-
-```bash
-$ sbcl --script hello-world.lisp
-
-hello, world
-```
-
-- `--script` is an option to SBCL to load the file then execute it.
 
 ### See also
 [Common Lisp Hyperspec: WRITE, PRIN1, PRINT, PPRINT, PRINC][hyperspec-print]
