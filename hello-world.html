@@ -4,10 +4,6 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="David Wickes" />
-  <meta name="author" content="Chris James" />
-  <meta name="author" content="Felix Dilke" />
-  <meta name="author" content="Nicky Chorley" />
   <title>Hello World</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -85,26 +81,18 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 <body>
 <header id="title-block-header">
 <h1 class="title">Hello World</h1>
-<p class="author">David Wickes</p>
-<p class="author">Chris James</p>
-<p class="author">Felix Dilke</p>
-<p class="author">Nicky Chorley</p>
-<p class="date">October 18th, 2018</p>
 </header>
 <h1 id="hello-world">Hello World</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">princ</span> <span class="st">&quot;hello, world&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">princ</span> <span class="st">&quot;hello, world&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">;; =&gt; hello, world</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">;;    &quot;hello, world&quot;</span></a></code></pre></div>
 <ul>
 <li>Functions in Common Lisp appear at the beginning of a pair of parentheses.</li>
 <li>The rest of the items up to the end of the parentheses are the arguments to the function.</li>
 <li><code>princ</code> is a basic print function.</li>
 <li>It prints an object in a way that looks good for humans.</li>
 <li>String literals are delimited with a <code>&quot;</code>.</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1">$ <span class="ex">sbcl</span> --script hello-world.lisp</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="ex">hello</span>, world</a></code></pre></div>
-<ul>
-<li><code>--script</code> is an option to SBCL to load the file then execute it.</li>
 </ul>
 <h3 id="see-also">See also</h3>
 <p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">Common Lisp Hyperspec: WRITE, PRIN1, PRINT, PPRINT, PRINC</a></p>
