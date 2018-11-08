@@ -39,7 +39,7 @@
 ;;    NIL
 ```
 
-- Multiple conditions can be written with `cond`. The first condition that is not `nil` will be evaluated and return. 
+- Multiple conditions can be written with `cond`. The first condition that is not `nil` will be evaluated and returned.
 - 'Else', as implemented in other languages can be written as the symbol `t` which always evaluates to `t`, _which is not `nil`_.
 
 ```commonlisp
