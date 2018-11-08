@@ -18,4 +18,6 @@ pandoc --output=common-lisp-by-example.epub \
   ./variables.md \
   ./constants.md \
   ./loops.md \
-  ./conditionals.md
+  ./conditionals.md \
+  ./lists.md \
+  ./associative-data.md
