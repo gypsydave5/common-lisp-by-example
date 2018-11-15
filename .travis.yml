@@ -7,7 +7,7 @@ deploy:
   - provider: script
     script:
       - now --public --token $NOW_TOKEN
-      - now --public alias --token $NOW_TOKEN
+      - now alias --token $NOW_TOKEN
     skip_cleanup: true
     on:
       master: true
