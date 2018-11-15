@@ -79,13 +79,17 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
   <![endif]-->
 </head>
 <body>
-<p>Associative Data</p>
+<h1 id="associative-data">Associative Data</h1>
+<h3 id="property-lists">Property Lists</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">list</span> :chris <span class="dv">34</span> :dave <span class="dv">38</span> :nicky <span class="dv">34</span> :alex <span class="dv">43</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">;; =&gt; (:CHRIS 34 :DAVE 38 :NICKY 34 :ALEX 43)</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4">(<span class="kw">getf</span> (<span class="kw">list</span> :a <span class="dv">1</span> :b <span class="dv">2</span>) :a)</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">;; =&gt; 1</span></a></code></pre></div>
-<p>Property list or p-list. Keys are usually written with keywords, which begin with a <code>:</code>.</p>
+<ul>
+<li>Property lists are also known as ‘plists’.</li>
+<li>Keys are usually written with <em>keywords</em>, which begin with a <code>:</code>.</li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">(<span class="kw">append</span> (<span class="kw">list</span> :x <span class="dv">1</span> :y <span class="dv">2</span>) (<span class="kw">list</span> :bob <span class="dv">3</span> :alice <span class="dv">4</span>))</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">;; =&gt; (:X 1 :Y 2 :BOB 3 :ALICE 4)</span></a>
@@ -95,7 +99,11 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">(<span class="kw">getf</span> (<span class="kw">append</span> (<span class="kw">list</span> :a <span class="dv">6</span> :b <span class="dv">5</span>) (<span class="kw">list</span> :b <span class="dv">4</span>)) :b)</a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">;; =&gt; 5</span></a></code></pre></div>
-<p>You can add items to a plist with <code>append</code> <em>because it’s just a list</em>. When retrieving a value by key, it will always get the most recent entry.</p>
+<ul>
+<li>You can add items to a plist with <code>append</code> <em>because it’s just a list</em>.</li>
+<li>When retrieving a value by key, it will always get the most recent entry.</li>
+</ul>
+<h3 id="association-lists">Association Lists</h3>
 <p>Association Lists - or alists - are similar but built out of lists of where each item is a <code>cons</code> cell.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" data-line-number="1">(<span class="kw">list</span> (<span class="kw">cons</span> :a <span class="dv">1</span>) (<span class="kw">cons</span> :b <span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">;; =&gt; ((:A . 1) (:B . 2))</span></a>
@@ -108,51 +116,88 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 <a class="sourceLine" id="cb3-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10">(<span class="kw">assoc</span> :dave (<span class="kw">list</span> (<span class="kw">cons</span> :bob <span class="dv">5</span>) (<span class="kw">cons</span> :sally <span class="dv">7</span>)))</a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">;; =&gt; NIL</span></a></code></pre></div>
-<p><code>assoc</code> returns the <code>cons</code> cell where the <code>car</code> is equal to the value you give it.</p>
+<ul>
+<li><code>assoc</code> returns the <code>cons</code> cell where the <code>car</code> is equal to the value you give it.</li>
+</ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" data-line-number="1">(<span class="kw">assoc</span> :dave (<span class="kw">list</span> (<span class="kw">cons</span> :dave <span class="dv">1</span>) (<span class="kw">cons</span> :dave <span class="dv">2</span>) (<span class="kw">cons</span> :dave <span class="dv">3</span>)))</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">;; =&gt; (:DAVE . 1)</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">(<span class="kw">acons</span> :dave <span class="dv">1</span> ())</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">;; =&gt; ((:DAVE . 1))</span></a></code></pre></div>
-<p>The first <code>cons</code> cell is always returned just as with plist. <code>acons</code> is a convenience function for appending to an alist.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">(<span class="kw">append</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>)) ())</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">;; =&gt; ((:BUTTS . &quot;nice&quot;))</span></a></code></pre></div>
-<p>We can also use append to build alists if we like</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb6-1" data-line-number="1">(<span class="kw">cons</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>) <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">;; =&gt; (:DAVE . 1)</span></a></code></pre></div>
+<ul>
+<li>The first <code>cons</code> cell is always returned, just as with plist.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb5-1" data-line-number="1">(<span class="kw">acons</span> :dave <span class="dv">1</span> ())</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">;; =&gt; ((:DAVE . 1))</span></a></code></pre></div>
+<ul>
+<li><code>acons</code> is a convenience function for appending to an alist.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb6-1" data-line-number="1">(<span class="kw">append</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>)) ())</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">;; =&gt; ((:BUTTS . &quot;nice&quot;))</span></a></code></pre></div>
-<p>Or <code>cons</code></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb7-1" data-line-number="1">(<span class="kw">rassoc</span> <span class="dv">2</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="dv">2</span>)))</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">;; =&gt; (:BUTTS . 2)</span></a></code></pre></div>
-<p><code>rassoc</code> lets us find cons cells by value (or <code>cdr</code>)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb8-1" data-line-number="1">(<span class="kw">rassoc</span> <span class="st">&quot;nice&quot;</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>)))</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">;; =&gt; NIL</span></a></code></pre></div>
-<p>Why doesn’t this work? It’s because <code>rassoc</code> uses <code>eq</code> which is object equality. This does work for strings.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb9-1" data-line-number="1">(<span class="kw">rassoc</span> <span class="st">&quot;nice&quot;</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>)) <span class="bu">:test</span> #&#39;equal)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">;; =&gt; (:BUTTS . &quot;nice&quot;)</span></a></code></pre></div>
-<p>We can fix this by supplying a function to check for equality</p>
+<ul>
+<li>We can also use <code>append</code> to build alists if we like</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb7-1" data-line-number="1">(<span class="kw">cons</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>) <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">;; =&gt; ((:BUTTS . &quot;nice&quot;))</span></a></code></pre></div>
+<ul>
+<li>Or <code>cons</code></li>
+<li>Because <em>they’re just lists</em></li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb8-1" data-line-number="1">(<span class="kw">rassoc</span> <span class="dv">2</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">;; =&gt; (:BUTTS . 2)</span></a></code></pre></div>
+<ul>
+<li><code>rassoc</code> lets us find cons cells by value (or <code>cdr</code>)</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb9-1" data-line-number="1">(<span class="kw">rassoc</span> <span class="st">&quot;nice&quot;</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>)))</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">;; =&gt; NIL</span></a></code></pre></div>
+<ul>
+<li>Why doesn’t this work?</li>
+<li><code>rassoc</code> (and <code>assoc</code>) use <code>eq</code> to compare values</li>
+<li><code>eq</code> compares values by <em>object</em> equality - whether they are the same object</li>
+<li>Strings are not guaranteed to be the same object</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb10-1" data-line-number="1">(<span class="kw">rassoc</span> <span class="st">&quot;nice&quot;</span> (<span class="kw">list</span> (<span class="kw">cons</span> :butts <span class="st">&quot;nice&quot;</span>)) <span class="bu">:test</span> #&#39;equal)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">;; =&gt; (:BUTTS . &quot;nice&quot;)</span></a></code></pre></div>
+<ul>
+<li>We can fix this by using the <code>equal</code> function to check for equality</li>
+<li>The function is passed to <code>rassoc</code> prefixed by the <code>:test</code> keyword</li>
+<li>This is called a <em>keyword argument</em></li>
+</ul>
 <h3 id="hashtable">Hashtable</h3>
-<p>We can create a hashtable using <code>make-hash-table</code> function. You can try and get value from a hashtable using <code>gethash</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb10-1" data-line-number="1">(<span class="kw">defparameter</span><span class="fu"> *a-table* </span>(<span class="kw">make-hash-table</span>))</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">;; =&gt; *A-TABLE*</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">(<span class="kw">gethash</span> :dave *a-table*)</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">;; =&gt; NIL</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">;;    NIL</span></a></code></pre></div>
-<p>We can use <code>setf</code> to add an entry to a hash table. The first argument is a place (in this case, somewhere in the hash table).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb11-1" data-line-number="1">(<span class="kw">setf</span> (<span class="kw">gethash</span> :dave *a-table*) <span class="dv">45</span>)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">;; =&gt; 45</span></a></code></pre></div>
-<p>The form <code>gethash</code> isn’t evaluated by <code>setf</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb12-1" data-line-number="1">(<span class="kw">gethash</span> :dave *a-table*)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">;; =&gt; 45</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">;;    T</span></a></code></pre></div>
-<p><code>gethash</code> returns two values: the first is the value associated with the key and the second is a boolean indicating whether the key was in the hash table.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb13-1" data-line-number="1">(<span class="kw">remhash</span> :dave *a-table*)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">;; =&gt; T</span></a></code></pre></div>
-<p><code>remhash</code> removes an entry from the hashtable. It returns <code>T</code> if the key was present. Otherwise it returns <code>NIL</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb14-1" data-line-number="1">(<span class="kw">gethash</span> :bobine *a-table* <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">;; =&gt; 4</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">;;    NIL</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb11-1" data-line-number="1">(<span class="kw">defparameter</span><span class="fu"> *a-table* </span>(<span class="kw">make-hash-table</span>))</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">;; =&gt; *A-TABLE*</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">(<span class="kw">gethash</span> :dave *a-table*)</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">;; =&gt; NIL</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">;;    NIL</span></a></code></pre></div>
+<ul>
+<li><code>make-hash-table</code> makes a hashtable</li>
+<li><code>gethash</code> gets values from a hashtable</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb12-1" data-line-number="1">(<span class="kw">setf</span> (<span class="kw">gethash</span> :dave *a-table*) <span class="dv">45</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">;; =&gt; 45</span></a></code></pre></div>
+<ul>
+<li><code>setf</code> to adds an entry to a hash table.</li>
+<li><code>setf</code> is a macro</li>
+<li>The first argument is a <em>place</em> (in this case, a place in the hash table).</li>
+<li>The form <code>gethash</code> isn’t evaluated by <code>setf</code>. It is being used as a place by the <code>setf</code> macro.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb13-1" data-line-number="1">(<span class="kw">gethash</span> :dave *a-table*)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">;; =&gt; 45</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">;;    T</span></a></code></pre></div>
+<ul>
+<li><code>gethash</code> returns two values: the first is the value associated with the key</li>
+<li>The second is a boolean indicating whether the key was in the hash table</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb14-1" data-line-number="1">(<span class="kw">remhash</span> :dave *a-table*)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">;; =&gt; T</span></a></code></pre></div>
+<ul>
+<li><code>remhash</code> removes an entry from the hashtable.</li>
+<li>It returns <code>t</code> if the key was present.</li>
+<li>Otherwise it returns <code>nil</code></li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb15-1" data-line-number="1">(<span class="kw">gethash</span> :bobine *a-table* <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">;; =&gt; 4</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">;;    NIL</span></a></code></pre></div>
 <p>You can provide <code>gethash</code> with a default value. This value is returned if the key is not present in the hashtable.</p>
+<h3 id="see-also">See also</h3>
+<p><a href="http://www.lispworks.com/documentation/lw50/CLHS/Body/f_mk_has.htm">Common Lisp Hyperspec: MAKE-HASH-TABLE</a> <a href="http://www.lispworks.com/documentation/lw50/CLHS/Body/m_setf_.htm">Common Lisp Hyperspec: SETF, PSETF</a> <a href="http://gigamonkeys.com/book/collections.html">Practical Common Lisp: Collections</a></p>
 </body>
 </html>
