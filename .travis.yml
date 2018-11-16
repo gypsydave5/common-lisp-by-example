@@ -5,7 +5,7 @@ before_deploy: npm install now --no-save # Install Now CLI on Travis
 script: printf "Please don't run any bloody tests"
 deploy:
   - provider: script
-    script: now --public --token $NOW_TOKEN now alias --token $NOW_TOKEN
+    script: now --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN
     skip_cleanup: true
     on:
       master: true
