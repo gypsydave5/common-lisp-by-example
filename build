@@ -20,4 +20,5 @@ pandoc --output=common-lisp-by-example.epub \
   ./loops.md \
   ./conditionals.md \
   ./lists.md \
-  ./associative-data.md
+  ./associative-data.md \
+  ./quote-and-eval.md
