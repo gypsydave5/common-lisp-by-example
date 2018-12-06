@@ -134,6 +134,53 @@
 ```
 - there is `&rest` prefix which collects all other arguments and puts them into a list 
 
+### Keyword arguments
+
+```commonlisp
+(defun hello-world (name &key shouty rude)
+  (let* ((basic (format nil "Hello ~a" name))
+         (postfix (if rude ", you pie!" "."))
+         (greeting (format nil "~a~a" basic postfix)))
+    (if shouty
+        (string-upcase greeting)
+        greeting)))
+;; => HELLO-WORLD
+
+(hello-world "bob")
+;; => "Hello bob."
+
+(hello-world "bob" :shouty t)
+;; => "HELLO BOB."
+
+(hello-world "bob" :rude t)
+;; => "Hello bob, you pie!"
+
+(hello-world "bob" :rude t :shouty t)
+;; => "HELLO BOB, YOU PIE!"
+```
+
+- keyword arguments are introduced by using `&key`
+- they are a way of providing named arguments in any order
+- keywords _have_ to be used if it is a keyword argument
+- the `&key` appears only _once_ - everything afterwards is a keyword argument
+- they default to `nil` but can have a default supplied in the same manner as `&optional` arguments
+
+```commonlisp
+
+(defun hello-everyone (&rest names &key shouty rude)
+  (let* ((basic (format nil "Hello ~a" names))
+         (postfix (if rude ", you pie!" "."))
+         (greeting (format nil "~a~a" basic postfix)))
+    (if shouty
+        (string-upcase greeting)
+        greeting)))
+;; => HELLO-EVERYONE
+
+(hello-everyone :rude t :shouty t)
+;; => "HELLO (RUDE T SHOUTY T), YOU PIE!"
+```
+
+- You can't combine `rest` arguments with named arguments. You can see here that `:rest` is "slurping" our keywords _and_ the keywords are still being used.  
 
 ```commonlisp
 (defun plus (a b)

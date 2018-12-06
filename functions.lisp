@@ -98,3 +98,44 @@
 (plus 1 2 "a" "b" "c")
 ;; => 6
 
+
+
+
+
+
+
+
+
+(defun hello-world (name &key shouty rude)
+  (let* ((basic (format nil "Hello ~a" name))
+         (postfix (if rude ", you pie!" "."))
+         (greeting (format nil "~a~a" basic postfix)))
+    (if shouty
+        (string-upcase greeting)
+        greeting)))
+
+;; => HELLO-WORLD
+
+(hello-world "bob")
+;; => "Hello bob."
+
+(hello-world "bob" :shouty t)
+;; => "HELLO BOB."
+
+(hello-world "bob" :rude t)
+;; => "Hello bob, you pie!"
+
+(hello-world "bob" :rude t :shouty t)
+;; => "HELLO BOB, YOU PIE!"
+
+(defun hello-everyone (&rest names &key shouty rude)
+  (let* ((basic (format nil "Hello ~a" names))
+         (postfix (if rude ", you pie!" "."))
+         (greeting (format nil "~a~a" basic postfix)))
+    (if shouty
+        (string-upcase greeting)
+        greeting)))
+;; => HELLO-EVERYONE
+
+(hello-everyone :rude t :shouty t)
+;; => "HELLO (RUDE T SHOUTY T), YOU PIE!"

@@ -196,13 +196,56 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 <ul>
 <li>there is <code>&amp;rest</code> prefix which collects all other arguments and puts them into a list</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb10-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">  <span class="st">&quot;Plus some numbers&quot;</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">  (<span class="op">+</span> a b))</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">(<span class="kw">documentation</span> &#39;plus &#39;function)</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">;; =&gt; &quot;Plus some numbers&quot;</span></a></code></pre></div>
+<h3 id="keyword-arguments">Keyword arguments</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb10-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> hello-world </span>(name &amp;key shouty rude)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">  (<span class="kw">let*</span> ((basic (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a&quot;</span> name))</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">         (postfix (<span class="kw">if</span> rude <span class="st">&quot;, you pie!&quot;</span> <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">         (greeting (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;~a~a&quot;</span> basic postfix)))</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">    (<span class="kw">if</span> shouty</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">        (<span class="kw">string-upcase</span> greeting)</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">        greeting)))</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">;; =&gt; HELLO-WORLD</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">(hello-world <span class="st">&quot;bob&quot;</span>)</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">;; =&gt; &quot;Hello bob.&quot;</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">(hello-world <span class="st">&quot;bob&quot;</span> :shouty <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">;; =&gt; &quot;HELLO BOB.&quot;</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16">(hello-world <span class="st">&quot;bob&quot;</span> :rude <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">;; =&gt; &quot;Hello bob, you pie!&quot;</span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19">(hello-world <span class="st">&quot;bob&quot;</span> :rude <span class="kw">t</span> :shouty <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">;; =&gt; &quot;HELLO BOB, YOU PIE!&quot;</span></a></code></pre></div>
+<ul>
+<li>keyword arguments are introduced by using <code>&amp;key</code></li>
+<li>they are a way of providing named arguments in any order</li>
+<li>keywords <em>have</em> to be used if it is a keyword argument</li>
+<li>the <code>&amp;key</code> appears only <em>once</em> - everything afterwards is a keyword argument</li>
+<li>they default to <code>nil</code> but can have a default supplied in the same manner as <code>&amp;optional</code> arguments</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">(<span class="kw">defun</span><span class="fu"> hello-everyone </span>(&amp;<span class="kw">rest</span> names &amp;key shouty rude)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">  (<span class="kw">let*</span> ((basic (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a&quot;</span> names))</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">         (postfix (<span class="kw">if</span> rude <span class="st">&quot;, you pie!&quot;</span> <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">         (greeting (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;~a~a&quot;</span> basic postfix)))</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">    (<span class="kw">if</span> shouty</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">        (<span class="kw">string-upcase</span> greeting)</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">        greeting)))</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">;; =&gt; HELLO-EVERYONE</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">(hello-everyone :rude <span class="kw">t</span> :shouty <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">;; =&gt; &quot;HELLO (RUDE T SHOUTY T), YOU PIE!&quot;</span></a></code></pre></div>
+<ul>
+<li>You can’t combine <code>rest</code> arguments with named arguments. You can see here that <code>:rest</code> is “slurping” our keywords <em>and</em> the keywords are still being used.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb12-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="st">&quot;Plus some numbers&quot;</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">  (<span class="op">+</span> a b))</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">(<span class="kw">documentation</span> &#39;plus &#39;function)</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">;; =&gt; &quot;Plus some numbers&quot;</span></a></code></pre></div>
 <ul>
 <li>You can add handy documentation to your functions</li>
 </ul>

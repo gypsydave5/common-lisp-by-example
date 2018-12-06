@@ -22,4 +22,5 @@ pandoc --output=common-lisp-by-example.epub \
   ./lists.md \
   ./associative-data.md \
   ./quote-and-eval.md \
-  ./functions.md
+  ./functions.md \
+  ./multiple-return-values.md
