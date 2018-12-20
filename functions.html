@@ -29,7 +29,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -80,143 +80,143 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 </head>
 <body>
 <h1 id="functions">Functions</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  (<span class="op">+</span> a b))</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">(plus <span class="dv">2</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">;; =&gt; 7</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" title="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b)</a>
+<a class="sourceLine" id="cb1-2" title="2">  (<span class="op">+</span> a b))</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">(plus <span class="dv">2</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">;; =&gt; 7</span></a></code></pre></div>
 <ul>
 <li>functions are defined with the macro <code>defun</code></li>
 <li>the name of a function is a symbol that’s the second form in the list</li>
 <li>the arguments to the function are a list that is the third form in the list</li>
 <li>everything afterwards is the body of the function</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> another-plus </span>(a b)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">  (<span class="kw">setf</span> a <span class="dv">1337</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">  (<span class="op">+</span> a b))</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">;; =&gt; ANOTHER-PLUS</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">(another-plus <span class="dv">2</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">;; =&gt; 1342</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" title="1">(<span class="kw">defun</span><span class="fu"> another-plus </span>(a b)</a>
+<a class="sourceLine" id="cb2-2" title="2">  (<span class="kw">setf</span> a <span class="dv">1337</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">  (<span class="op">+</span> a b))</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">;; =&gt; ANOTHER-PLUS</span></a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6">(another-plus <span class="dv">2</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">;; =&gt; 1342</span></a></code></pre></div>
 <ul>
 <li>you can have multiple forms within the function body - there’s implicitly a block around them all.</li>
 <li>the final form in the function body is what the function evaluates to.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b c)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">  (<span class="op">+</span> a b c))</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">(plus <span class="dv">2</span> <span class="dv">5</span> <span class="dv">11</span>)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">;; =&gt; 18</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">(plus <span class="dv">2</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">;; ERROR!!!</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" title="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b c)</a>
+<a class="sourceLine" id="cb3-2" title="2">  (<span class="op">+</span> a b c))</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5">(plus <span class="dv">2</span> <span class="dv">5</span> <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">;; =&gt; 18</span></a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">(plus <span class="dv">2</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">;; ERROR!!!</span></a></code></pre></div>
 <ul>
 <li>there is no function overload. If we define a function with the same name, we just redefine existing function.</li>
 <li>there is no currying so if don’t pass enough arguments to a function, it will just blow up</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b &amp;optional c)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">  (<span class="kw">if</span> c (<span class="op">+</span> a b c)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">      (<span class="op">+</span> a b)))</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">(plus <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">;; =&gt; 6</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">(plus <span class="dv">3</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">;; =&gt; 5</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" title="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b &amp;optional c)</a>
+<a class="sourceLine" id="cb4-2" title="2">  (<span class="kw">if</span> c (<span class="op">+</span> a b c)</a>
+<a class="sourceLine" id="cb4-3" title="3">      (<span class="op">+</span> a b)))</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb4-5" title="5"></a>
+<a class="sourceLine" id="cb4-6" title="6">(plus <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">;; =&gt; 6</span></a>
+<a class="sourceLine" id="cb4-8" title="8"></a>
+<a class="sourceLine" id="cb4-9" title="9">(plus <span class="dv">3</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">;; =&gt; 5</span></a></code></pre></div>
 <ul>
 <li>Functions can have optional arguments denoted by a <code>&amp;optional</code> prefix.</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb5-1" data-line-number="1">(plus <span class="dv">3</span> <span class="dv">2</span> <span class="kw">nil</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">;; =&gt; 5</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb5-1" title="1">(plus <span class="dv">3</span> <span class="dv">2</span> <span class="kw">nil</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">;; =&gt; 5</span></a></code></pre></div>
 <ul>
 <li>If you want to call the function without the optional parameter implicitly, just pass the nil</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb6-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b &amp;optional (c <span class="dv">0</span>))</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">  (<span class="op">+</span> a b c))</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">(plus <span class="dv">3</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">;; =&gt; 5</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">(plus <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">;; =&gt; 6</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb6-1" title="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b &amp;optional (c <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb6-2" title="2">  (<span class="op">+</span> a b c))</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5">(plus <span class="dv">3</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">;; =&gt; 5</span></a>
+<a class="sourceLine" id="cb6-7" title="7"></a>
+<a class="sourceLine" id="cb6-8" title="8">(plus <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">;; =&gt; 6</span></a></code></pre></div>
 <ul>
 <li>You can provide default value for the optional argument by wrapping it in the list where the second form is the default value</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb7-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> say-hello </span>(&amp;optional (name <span class="st">&quot;anon&quot;</span> name-supplied-p))</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">  (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a (~a)&quot;</span> name name-supplied-p))</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">;; =&gt; SAY-HELLO</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">(say-hello)</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">;; =&gt; &quot;Hello anon (NIL)&quot;</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">(say-hello <span class="st">&quot;DAVE&quot;</span>)</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">;; =&gt; &quot;Hello DAVE (T)&quot;</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">(say-hello <span class="st">&quot;anon&quot;</span>)</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">;; =&gt; &quot;Hello anon (T)&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb7-1" title="1">(<span class="kw">defun</span><span class="fu"> say-hello </span>(&amp;optional (name <span class="st">&quot;anon&quot;</span> name-supplied-p))</a>
+<a class="sourceLine" id="cb7-2" title="2">  (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a (~a)&quot;</span> name name-supplied-p))</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">;; =&gt; SAY-HELLO</span></a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5">(say-hello)</a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">;; =&gt; &quot;Hello anon (NIL)&quot;</span></a>
+<a class="sourceLine" id="cb7-7" title="7">(say-hello <span class="st">&quot;DAVE&quot;</span>)</a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co">;; =&gt; &quot;Hello DAVE (T)&quot;</span></a>
+<a class="sourceLine" id="cb7-9" title="9">(say-hello <span class="st">&quot;anon&quot;</span>)</a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="co">;; =&gt; &quot;Hello anon (T)&quot;</span></a></code></pre></div>
 <ul>
 <li>a third item in the <code>&amp;optional</code> argument list is a flag to tell you whether an optional argument was actually passed</li>
 <li>this is good to distinguish between the default argument being used and the same value being passed in.</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb8-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(&amp;optional (a <span class="dv">0</span> a-p) (b <span class="dv">0</span> b-p))</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">  (<span class="kw">princ</span> a-p)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">  (<span class="kw">princ</span> b-p)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">  (<span class="op">+</span> a b))</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">(plus)</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">;; =&gt; NILNIL</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">;;</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">;;    0</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">(plus <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">;; =&gt; TNIL</span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">;;</span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">;;    2</span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17">(plus <span class="dv">2</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">;; =&gt; TT</span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">;;</span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">;;    4</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb8-1" title="1">(<span class="kw">defun</span><span class="fu"> plus </span>(&amp;optional (a <span class="dv">0</span> a-p) (b <span class="dv">0</span> b-p))</a>
+<a class="sourceLine" id="cb8-2" title="2">  (<span class="kw">princ</span> a-p)</a>
+<a class="sourceLine" id="cb8-3" title="3">  (<span class="kw">princ</span> b-p)</a>
+<a class="sourceLine" id="cb8-4" title="4">  (<span class="op">+</span> a b))</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7">(plus)</a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">;; =&gt; NILNIL</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">;;    0</span></a>
+<a class="sourceLine" id="cb8-11" title="11"></a>
+<a class="sourceLine" id="cb8-12" title="12">(plus <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="co">;; =&gt; TNIL</span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb8-15" title="15"><span class="co">;;    2</span></a>
+<a class="sourceLine" id="cb8-16" title="16"></a>
+<a class="sourceLine" id="cb8-17" title="17">(plus <span class="dv">2</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb8-18" title="18"><span class="co">;; =&gt; TT</span></a>
+<a class="sourceLine" id="cb8-19" title="19"><span class="co">;;</span></a>
+<a class="sourceLine" id="cb8-20" title="20"><span class="co">;;    4</span></a></code></pre></div>
 <ul>
 <li>You can have multiple optional arguments with the supplied flag bindings</li>
 <li>All the arguments after <code>&amp;optional</code> become optional</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb9-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b &amp;<span class="kw">rest</span> <span class="kw">rest</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">  (<span class="op">+</span> a b (<span class="kw">length</span> <span class="kw">rest</span>)))</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">(plus <span class="dv">1</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">;; =&gt; 3</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">(plus <span class="dv">1</span> <span class="dv">2</span> <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span>)</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">;; =&gt; 6</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb9-1" title="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b &amp;<span class="kw">rest</span> <span class="kw">rest</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2">  (<span class="op">+</span> a b (<span class="kw">length</span> <span class="kw">rest</span>)))</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5">(plus <span class="dv">1</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co">;; =&gt; 3</span></a>
+<a class="sourceLine" id="cb9-7" title="7"></a>
+<a class="sourceLine" id="cb9-8" title="8">(plus <span class="dv">1</span> <span class="dv">2</span> <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span>)</a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">;; =&gt; 6</span></a></code></pre></div>
 <ul>
 <li>there is <code>&amp;rest</code> prefix which collects all other arguments and puts them into a list</li>
 </ul>
 <h3 id="keyword-arguments">Keyword arguments</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb10-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> hello-world </span>(name &amp;key shouty rude)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">  (<span class="kw">let*</span> ((basic (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a&quot;</span> name))</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">         (postfix (<span class="kw">if</span> rude <span class="st">&quot;, you pie!&quot;</span> <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">         (greeting (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;~a~a&quot;</span> basic postfix)))</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">    (<span class="kw">if</span> shouty</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">        (<span class="kw">string-upcase</span> greeting)</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">        greeting)))</a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">;; =&gt; HELLO-WORLD</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10">(hello-world <span class="st">&quot;bob&quot;</span>)</a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">;; =&gt; &quot;Hello bob.&quot;</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13">(hello-world <span class="st">&quot;bob&quot;</span> :shouty <span class="kw">t</span>)</a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">;; =&gt; &quot;HELLO BOB.&quot;</span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16">(hello-world <span class="st">&quot;bob&quot;</span> :rude <span class="kw">t</span>)</a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">;; =&gt; &quot;Hello bob, you pie!&quot;</span></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19">(hello-world <span class="st">&quot;bob&quot;</span> :rude <span class="kw">t</span> :shouty <span class="kw">t</span>)</a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">;; =&gt; &quot;HELLO BOB, YOU PIE!&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb10-1" title="1">(<span class="kw">defun</span><span class="fu"> hello-world </span>(name &amp;key shouty rude)</a>
+<a class="sourceLine" id="cb10-2" title="2">  (<span class="kw">let*</span> ((basic (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a&quot;</span> name))</a>
+<a class="sourceLine" id="cb10-3" title="3">         (postfix (<span class="kw">if</span> rude <span class="st">&quot;, you pie!&quot;</span> <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb10-4" title="4">         (greeting (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;~a~a&quot;</span> basic postfix)))</a>
+<a class="sourceLine" id="cb10-5" title="5">    (<span class="kw">if</span> shouty</a>
+<a class="sourceLine" id="cb10-6" title="6">        (<span class="kw">string-upcase</span> greeting)</a>
+<a class="sourceLine" id="cb10-7" title="7">        greeting)))</a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="co">;; =&gt; HELLO-WORLD</span></a>
+<a class="sourceLine" id="cb10-9" title="9"></a>
+<a class="sourceLine" id="cb10-10" title="10">(hello-world <span class="st">&quot;bob&quot;</span>)</a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="co">;; =&gt; &quot;Hello bob.&quot;</span></a>
+<a class="sourceLine" id="cb10-12" title="12"></a>
+<a class="sourceLine" id="cb10-13" title="13">(hello-world <span class="st">&quot;bob&quot;</span> :shouty <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="co">;; =&gt; &quot;HELLO BOB.&quot;</span></a>
+<a class="sourceLine" id="cb10-15" title="15"></a>
+<a class="sourceLine" id="cb10-16" title="16">(hello-world <span class="st">&quot;bob&quot;</span> :rude <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb10-17" title="17"><span class="co">;; =&gt; &quot;Hello bob, you pie!&quot;</span></a>
+<a class="sourceLine" id="cb10-18" title="18"></a>
+<a class="sourceLine" id="cb10-19" title="19">(hello-world <span class="st">&quot;bob&quot;</span> :rude <span class="kw">t</span> :shouty <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb10-20" title="20"><span class="co">;; =&gt; &quot;HELLO BOB, YOU PIE!&quot;</span></a></code></pre></div>
 <ul>
 <li>keyword arguments are introduced by using <code>&amp;key</code></li>
 <li>they are a way of providing named arguments in any order</li>
@@ -224,28 +224,28 @@ code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
 <li>the <code>&amp;key</code> appears only <em>once</em> - everything afterwards is a keyword argument</li>
 <li>they default to <code>nil</code> but can have a default supplied in the same manner as <code>&amp;optional</code> arguments</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">(<span class="kw">defun</span><span class="fu"> hello-everyone </span>(&amp;<span class="kw">rest</span> names &amp;key shouty rude)</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">  (<span class="kw">let*</span> ((basic (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a&quot;</span> names))</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">         (postfix (<span class="kw">if</span> rude <span class="st">&quot;, you pie!&quot;</span> <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">         (greeting (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;~a~a&quot;</span> basic postfix)))</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">    (<span class="kw">if</span> shouty</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">        (<span class="kw">string-upcase</span> greeting)</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">        greeting)))</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">;; =&gt; HELLO-EVERYONE</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11">(hello-everyone :rude <span class="kw">t</span> :shouty <span class="kw">t</span>)</a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">;; =&gt; &quot;HELLO (RUDE T SHOUTY T), YOU PIE!&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb11-1" title="1"></a>
+<a class="sourceLine" id="cb11-2" title="2">(<span class="kw">defun</span><span class="fu"> hello-everyone </span>(&amp;<span class="kw">rest</span> names &amp;key shouty rude)</a>
+<a class="sourceLine" id="cb11-3" title="3">  (<span class="kw">let*</span> ((basic (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;Hello ~a&quot;</span> names))</a>
+<a class="sourceLine" id="cb11-4" title="4">         (postfix (<span class="kw">if</span> rude <span class="st">&quot;, you pie!&quot;</span> <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb11-5" title="5">         (greeting (<span class="kw">format</span> <span class="kw">nil</span> <span class="st">&quot;~a~a&quot;</span> basic postfix)))</a>
+<a class="sourceLine" id="cb11-6" title="6">    (<span class="kw">if</span> shouty</a>
+<a class="sourceLine" id="cb11-7" title="7">        (<span class="kw">string-upcase</span> greeting)</a>
+<a class="sourceLine" id="cb11-8" title="8">        greeting)))</a>
+<a class="sourceLine" id="cb11-9" title="9"><span class="co">;; =&gt; HELLO-EVERYONE</span></a>
+<a class="sourceLine" id="cb11-10" title="10"></a>
+<a class="sourceLine" id="cb11-11" title="11">(hello-everyone :rude <span class="kw">t</span> :shouty <span class="kw">t</span>)</a>
+<a class="sourceLine" id="cb11-12" title="12"><span class="co">;; =&gt; &quot;HELLO (RUDE T SHOUTY T), YOU PIE!&quot;</span></a></code></pre></div>
 <ul>
 <li>You can’t combine <code>rest</code> arguments with named arguments. You can see here that <code>:rest</code> is “slurping” our keywords <em>and</em> the keywords are still being used.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb12-1" data-line-number="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="st">&quot;Plus some numbers&quot;</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">  (<span class="op">+</span> a b))</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">;; =&gt; PLUS</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">(<span class="kw">documentation</span> &#39;plus &#39;function)</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">;; =&gt; &quot;Plus some numbers&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb12-1" title="1">(<span class="kw">defun</span><span class="fu"> plus </span>(a b)</a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="st">&quot;Plus some numbers&quot;</span></a>
+<a class="sourceLine" id="cb12-3" title="3">  (<span class="op">+</span> a b))</a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="co">;; =&gt; PLUS</span></a>
+<a class="sourceLine" id="cb12-5" title="5"></a>
+<a class="sourceLine" id="cb12-6" title="6">(<span class="kw">documentation</span> &#39;plus &#39;function)</a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="co">;; =&gt; &quot;Plus some numbers&quot;</span></a></code></pre></div>
 <ul>
 <li>You can add handy documentation to your functions</li>
 </ul>

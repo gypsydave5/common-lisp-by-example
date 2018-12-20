@@ -1,5 +1,5 @@
 (defun average (&rest nums)
-  (let ((mean(/ (apply #'+ nums) (length nums)))
+  (let ((mean (/ (apply #'+ nums) (length nums)))
         (median (nth (floor (/ (length nums) 2)) (sort nums #'<))))
     (values mean median)))
 ;; => AVERAGE
@@ -13,3 +13,7 @@
 
 (multiple-value-list (values 1 2 4))
 ;; => (1 2 4)
+
+(multiple-value-bind (a b c) (values 1 2 3)
+  (format nil "(a b c) - easy as ~a ~a ~a" a b c))
+;; => "(a b c) - easy as 1 2 3"

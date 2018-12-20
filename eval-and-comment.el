@@ -6,3 +6,5 @@
 (default-text-scale-mode)
 (lispy-mode)
 (global-set-key (kbd "C-c e") 'lispy-eval-and-comment)
+
+;; spr%wm3n$

@@ -25,7 +25,7 @@
 </ul>
 <p>The first is useful when showing your editor to a large group. The second is useful when showing what each expression evaluates to.</p>
 <h2 id="installation">Installation</h2>
-<p>To install them, a short Elisp script is supplied: <a href="eval-and-comment.el" class="uri">eval-and-comment.el</a>. Open this in Portacle and evaluate it with the Emacs command <code>M-x eval-buffer</code>.</p>
+<p>To install them, a short Elisp script is supplied: <a href="eval-and-comment.el">eval-and-comment.el</a>. Open this in Portacle and evaluate it with the Emacs command <code>M-x eval-buffer</code>.</p>
 <h2 id="use">Use</h2>
 <p>You can now zoom all buffers with <code>C-M-=</code> and zoom out with <code>C-M--</code>, and evaluate and comment an expression your cursor is in with <code>C-c C-e</code>.</p>
 <h2 id="explanation">Explanation</h2>
@@ -48,7 +48,7 @@
 <p>Turns on <code>default-text-scale</code> for all buffers. If you need to do this again you can type <code>M-x default-text-scale</code>.</p>
 <h3 id="lispy-mode"><code>(lispy-mode)</code></h3>
 <p>Turns on lispy mode for the current buffer. We do this to bring the function we want into scope.</p>
-<h3 id="global-set-key-kbd-c-c-c-e-lispy-eval-and-comment"><code>(global-set-key (kbd &quot;C-c C-e&quot;) 'lispy-eval-and-comment)</code></h3>
+<h3 id="global-set-key-kbd-c-c-c-e-lispy-eval-and-comment"><code>(global-set-key (kbd "C-c C-e") 'lispy-eval-and-comment)</code></h3>
 <p>This globally binds the key sequence <code>C-c C-e</code> to the lispy function <code>lispy-eval-and-comment</code>.</p>
 </body>
 </html>

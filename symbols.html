@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>symbols</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #2a211c;
+    color: #bdae9d;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+div.sourceCode
+  { color: #bdae9d; background-color: #2a211c; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffff00; } /* Alert */
+code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #44aa43; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #049b0a; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+code span.dt { text-decoration: underline; } /* DataType */
+code span.dv { color: #44aa43; } /* DecVal */
+code span.er { color: #ffff00; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #44aa43; } /* Float */
+code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+code span.op { } /* Operator */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.sc { color: #049b0a; } /* SpecialChar */
+code span.ss { color: #049b0a; } /* SpecialString */
+code span.st { color: #049b0a; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #049b0a; } /* VerbatimString */
+code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="tufte.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p>#Symbols</p>
+<p>Common Lisp is a Lisp 2. The only difference between a Lisp 1 and Lisp 2 is that Lisp 2 languages have two separate namespaces for values and functions. In Common Lisp this is managed using symbols. We can demonstrate this as follows, in the REPL:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" title="1">CL-USER&gt; (<span class="kw">inspect</span> <span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">The object is an ATOM:</a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="dv">42</span></a></code></pre></div>
+<p><code>inspect</code> is a function which reports on the internal representation of the object that is passed to it. In the example above, the number <code>42</code> which is an <code>ATOM</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" title="1">CL-USER&gt; (<span class="kw">inspect</span> &#39;foo)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">The object is a SYMBOL.</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="fl">0.</span> Name: <span class="st">&quot;FOO&quot;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="fl">1.</span> Package: #&lt;PACKAGE <span class="st">&quot;COMMON-LISP-USER&quot;</span>&gt;</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="fl">2.</span> Value: <span class="st">&quot;unbound&quot;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="fl">3.</span> Function: <span class="st">&quot;unbound&quot;</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="fl">4.</span> Plist: NIL</a></code></pre></div>
+<p>Here we <code>inspect</code> a symbol <code>foo</code> and we can see 5 “slots”. The <code>Name</code>, which is a unique identifier for the symbol. <code>Package</code>, which as you might expect defines a namespace in which the symbol exists. <code>Plist</code> is out of scope for this chapter, but we will look more deeply at <code>Value</code> and <code>Function</code>.</p>
+<p>When we define a value “foo” we fill the <code>Value</code> slot on the symbol <code>foo</code>. For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;</span> (<span class="kw">defparameter</span><span class="fu"> foo </span><span class="st">&quot;some value&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">FOO</a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5">CL-USER&gt; (<span class="kw">inspect</span> &#39;foo)</a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7">The object is a SYMBOL.</a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="fl">0.</span> Name: <span class="st">&quot;FOO&quot;</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="fl">1.</span> Package: #&lt;PACKAGE <span class="st">&quot;COMMON-LISP-USER&quot;</span>&gt;</a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="fl">2.</span> Value: <span class="st">&quot;some value&quot;</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="fl">3.</span> Function: <span class="st">&quot;unbound&quot;</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="fl">4.</span> Plist: NIL</a></code></pre></div>
+<p>The <code>Value</code> slot of <code>foo</code> now contains <code>"some value"</code>. Similarly, declaring a function <code>foo</code> will fill the <code>Function</code> slot on <code>foo</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" title="1">CL-USER&gt; (<span class="kw">inspect</span> &#39;(a b c))</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3">The object is a proper <span class="kw">list</span> of <span class="kw">length</span> <span class="fl">3.</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="fl">0.</span> <span class="dv">0</span>: A</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="fl">1.</span> <span class="dv">1</span>: B</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="fl">2.</span> <span class="dv">2</span>: C</a></code></pre></div>
+<p>In this example, a list is passed to <code>inspect</code>. We can see that the list has a numbered slot for each item, each item has an index and also a value.</p>
+</body>
+</html>

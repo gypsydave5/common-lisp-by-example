@@ -20,14 +20,10 @@ return multiple values as a list
 ```
 
 ```commonlisp
-(defun median (&rest nums)
-  (multiple-value-bind (_ median) (apply #'average nums)
-    median))
-;; => MEDIAN
-
-(median 1 2 3 4 5)
-;; => 3
+(multiple-value-bind (a b c) (values 1 2 3)
+  (format nil "(a b c) - easy as ~a ~a ~a" a b c))
+  
+;; => "(a b c) - easy as 1 2 3"
 ```
 
 - `multiple-value-bind` creates a lexical scope where the multiple values returned by a form are bound to variables you supply - kinda like `let`.
-- here we ignore the first value (assigning it to `_`), and only use the second, `median`
