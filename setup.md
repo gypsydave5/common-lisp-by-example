@@ -44,3 +44,4 @@ This is taken from the [Lispy][lispy] Emacs package, as described in the
 [SLIME]: https://common-lisp.net/project/slime/
 [emacs-tutorial]: emacs-tutorial.html
 [addons]: addons.html
+[lispy]: https://github.com/abo-abo/lispy
