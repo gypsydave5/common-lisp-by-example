@@ -1,4 +1,4 @@
-#Symbols
+# Symbols
 
 Common Lisp is a Lisp 2. The only difference between a Lisp 1 and Lisp 2 is that Lisp 2 languages have two separate namespaces for values and functions. In Common Lisp this is managed using symbols. We can demonstrate this as follows, in the REPL:
 
@@ -23,14 +23,19 @@ The object is a SYMBOL.
 ```
 
 Here we `inspect` a symbol `foo` and we  can see 5 "slots". 
-The `Name`, which is a unique identifier for the symbol.
-`Package`, which as you might expect defines a namespace in which the symbol exists.
-`Plist` is out of scope for this chapter, but we will look more deeply at `Value` and `Function`.
+
+- `Name` which is a unique identifier for the symbol.
+- `Package` which as you might expect defines a namespace in which the symbol exists.
+- `Value`
+- `Function`
+- `Plist` is out of scope for this chapter.
+
+We will look more deeply at `Value` and `Function`.
 
 When we define a value "foo" we fill the `Value` slot on the symbol `foo`. For example:
 
 ```commonlisp
-> (defparameter foo "some value")
+CL-USER> (defparameter foo "some value")
 
 FOO
 
