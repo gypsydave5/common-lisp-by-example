@@ -71,7 +71,7 @@ Returns everything but the last element.
 
 ```
 
-- `subseq` returns the elements of a list from the first index to the last in a list (last index is exlusive).
+- `subseq` returns the elements of a list from the first index to the last in a list (last index is exclusive).
 - The last index is optional.
 - It'll blow up if the list isn't long enough
 
