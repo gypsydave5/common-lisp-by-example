@@ -5,7 +5,7 @@
 ;; => (2 3 4)
 ```
 
-- `mapcar` is a higher-order-function since it takes a function and applies it to each element in the list
+- `mapcar` is a higher order function since it takes a function and applies it to each element in the list
 
 ```commonlisp
 (function 1+)
@@ -50,4 +50,7 @@
 ;; => (2 3 4)
 ```
 
-- When defining our own higher-order-functions we need to use `funcall`. This is because the first argument passed into our function is in the "value namespace" which means we cant just call it as if its a function. What `funcall` does is let us "lift" the function from the value namespace into the function namespace.
+- When defining our own higher order functions we need to use `funcall`. This
+is because the first argument passed into our function is in the "value namespace",
+which means we can't just call it as if it's a function. What `funcall` does is let
+us "lift" the function from the value namespace into the function namespace.
